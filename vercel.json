@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "https://api.openweathermap.org/data/3.0/(.*)",
+      "source": "/data/3.0/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
