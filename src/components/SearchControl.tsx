@@ -1,12 +1,12 @@
-import SearchIcon from "@mui/icons-material/Search";
+import SearchIcon from '@mui/icons-material/Search';
 import {
   Box,
   Checkbox,
   FormControlLabel,
   IconButton,
   TextField,
-} from "@mui/material";
-import { FC } from "react";
+} from '@mui/material';
+import { FC } from 'react';
 
 interface SearchControlProps {
   value: string;
@@ -26,18 +26,18 @@ const SearchControl: FC<SearchControlProps> = ({
   return (
     <Box
       sx={{
-        display: "flex",
-        direction: "column",
-        justifyContent: "center",
-        alignItems: "center",
+        display: 'flex',
+        direction: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
         mb: 2,
       }}
     >
       <Box display="flex" alignItems="start">
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
+            display: 'flex',
+            flexDirection: 'column',
             width: 250,
           }}
         >

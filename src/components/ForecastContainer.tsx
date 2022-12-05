@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { ForecastDataResponse } from "src/services/weatherService";
-import ForecastCard from "./ForecastCard";
-import Loader from "./Loader";
+import { FC } from 'react';
+import { ForecastDataResponse } from 'src/services/weatherService';
+import ForecastCard from './ForecastCard';
+import Loader from './Loader';
 
 interface ForecastContainerProps {
   data: ForecastDataResponse;
@@ -18,7 +18,7 @@ const ForecastContainer: FC<ForecastContainerProps> = ({
   return (
     <Loader isLoading={isLoading} hasData={data}>
       {data?.list
-        .filter((reading) => reading.dtTxt.includes("18:00:00"))
+        .filter((reading) => reading.dtTxt.includes('18:00:00'))
         .map((forecast) => (
           <ForecastCard key={forecast.dtTxt} forecast={forecast} />
         ))}

@@ -1,10 +1,10 @@
-import type { FC, ReactNode } from "react";
-import { createContext, useEffect, useState } from "react";
-import { THEMES } from "src/constants";
+import type { FC, ReactNode } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { THEMES } from 'src/constants';
 
 interface Settings {
   compact?: boolean;
-  direction?: "ltr" | "rtl";
+  direction?: 'ltr' | 'rtl';
   responsiveFontSizes?: boolean;
   roundedCorners?: boolean;
   theme?: string;
@@ -21,7 +21,7 @@ interface SettingsProviderProps {
 
 const initialSettings: Settings = {
   compact: true,
-  direction: "ltr",
+  direction: 'ltr',
   responsiveFontSizes: true,
   roundedCorners: true,
   theme: THEMES.DARK,
@@ -31,17 +31,17 @@ export const restoreSettings = (): Settings | null => {
   let settings = null;
 
   try {
-    const storedData: string | null = window.localStorage.getItem("settings");
+    const storedData: string | null = window.localStorage.getItem('settings');
 
     if (storedData) {
       settings = JSON.parse(storedData);
     } else {
       settings = {
         compact: true,
-        direction: "ltr",
+        direction: 'ltr',
         responsiveFontSizes: true,
         roundedCorners: true,
-        theme: window.matchMedia("(prefers-color-scheme: dark)").matches
+        theme: window.matchMedia('(prefers-color-scheme: dark)').matches
           ? THEMES.DARK
           : THEMES.LIGHT,
       };
@@ -55,7 +55,7 @@ export const restoreSettings = (): Settings | null => {
 };
 
 export const storeSettings = (settings: Settings): void => {
-  window.localStorage.setItem("settings", JSON.stringify(settings));
+  window.localStorage.setItem('settings', JSON.stringify(settings));
 };
 
 const SettingsContext = createContext<SettingsContextValue>({

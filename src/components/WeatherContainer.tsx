@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { WeatherDataResponse } from "src/services/weatherService";
-import Loader from "./Loader";
-import WeatherCard from "./WeatherCard";
+import { FC } from 'react';
+import { WeatherDataResponse } from 'src/services/weatherService';
+import Loader from './Loader';
+import WeatherCard from './WeatherCard';
 
 interface WeatherContainerProps {
   data: WeatherDataResponse;

@@ -21,7 +21,6 @@
     "camelcase-keys": "^7.0.2",
     "encrypt-storage": "^2.2.6",
     "env-cmd": "^10.1.0",
-    "firebase": "^9.6.10",
     "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
@@ -69,5 +68,9 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^16.1.4",
     "eslint-plugin-import": "^2.25.4"
-  }
+  },
+  "resolutions": {
+    "@types/react": "17.0.0",
+    "@types/react-dom": "17.0.0"
+ }
 }
