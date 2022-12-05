@@ -16,6 +16,7 @@ export interface ForecastForm {
 
 export interface WeatherDataResponse {
   name: string
+  dt: number
   coord: {
     lon: number
     lat: number
@@ -39,6 +40,7 @@ export interface WeatherDataResponse {
 
 export interface ForecastResponse {
   dtTxt: string
+  dt: number
   main: {
     pressure: number
     humidity: number

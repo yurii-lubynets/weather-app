@@ -15,9 +15,7 @@ const Login: FC = () => {
       >
         <Container maxWidth="sm" sx={{ py: '180px' }}>
           <Card>
-            <CardContent
-              sx={{ display: 'flex', flexDirection: 'column', p: 4 }}
-            >
+            <CardContent>
               <Typography color="textPrimary" gutterBottom variant="h4">
                 Login
               </Typography>

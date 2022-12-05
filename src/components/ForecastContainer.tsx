@@ -8,6 +8,7 @@ interface ForecastContainerProps {
   isLoading: boolean;
   isNotFetched: boolean;
 }
+
 const ForecastContainer: FC<ForecastContainerProps> = ({
   data,
   isLoading,

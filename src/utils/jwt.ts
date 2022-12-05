@@ -4,10 +4,6 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 export const JWT_SECRET = 'top-secret-key';
 export const JWT_EXPIRES_IN = 3600 * 24 * 1; // 1 day
 
-// Since we are unable to sign a JWT in a browser
-// because "jsonwebtoken" library is available on server side only, NodeJS environment
-// we simply simulate a signed token, no complex checks because on server side
-// you're using the library
 export const sign = (
   payload: Record<string, any>,
   privateKey: string,
@@ -29,8 +25,6 @@ export const sign = (
   return `${encodedHeader}.${encodedPayload}.${signature}`;
 };
 
-// Since we create a fake signed token, we have to implement a fake jwt decode
-// platform to simulate "jwt-decode" library.
 export const decode = (token: string): any => {
   const [encodedHeader, encodedPayload, signature] = token.split('.');
   const header = JSON.parse(atob(encodedHeader));
@@ -88,7 +82,7 @@ export const verify = (
 
 export const isValidToken = (token: string) => {
   if (!token) return false;
-  const decoded = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload type
+  const decoded = jwtDecode<JwtPayload>(token);
   const currentTime = Date.now() / 1000;
   return decoded.exp > currentTime;
 };

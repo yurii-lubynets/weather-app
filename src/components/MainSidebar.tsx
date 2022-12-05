@@ -51,13 +51,14 @@ const MainSidebar: FC<MainSidebarProps> = ({ onMobileClose, openMobile }) => {
           to="/stations"
           underline="none"
           variant="body1"
+          sx={{ mt: 3 }}
         >
           Weather Stations
         </Link>
         <Button
           color="primary"
           size="small"
-          sx={{ mt: 1 }}
+          sx={{ mt: 3 }}
           variant="contained"
           onClick={handleLogout}
         >

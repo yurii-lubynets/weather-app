@@ -21,9 +21,6 @@ const AuthGuard: FC<AuthGuardProps> = ({ children }) => {
     return <Login />;
   }
 
-  // This is done so that in case the route changes by any chance through other
-  // means between the moment of request and the render we navigate to the initially
-  // requested route.
   if (requestedLocation && location.pathname !== requestedLocation) {
     setRequestedLocation(null);
     return <Navigate to={requestedLocation} />;

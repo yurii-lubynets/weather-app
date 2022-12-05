@@ -1,6 +1,7 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import { FC } from 'react';
 import { ForecastResponse } from 'src/services/weatherService';
+import { formatDate } from 'src/utils/formatDate';
 
 interface ForecastCardProps {
   forecast: ForecastResponse;
@@ -13,7 +14,7 @@ const ForecastCard: FC<ForecastCardProps> = ({ forecast }) => {
         <Box display="flex" flexDirection="row">
           <Box p={1}>
             <Typography variant="h2" color="textPrimary">
-              {forecast.dtTxt}
+              {formatDate(forecast.dt)}
             </Typography>
           </Box>
         </Box>

@@ -6,7 +6,7 @@ const useLogout = (): () => Promise<void> => {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = useCallback(async (): Promise<void> => {
+  const handleLogout = useCallback(async () => {
     try {
       await logout();
       navigate('/');

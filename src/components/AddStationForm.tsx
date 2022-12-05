@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Formik } from 'formik';
-import type { FC } from 'react';
+import { FC, useCallback } from 'react';
 import useMounted from 'src/hooks/useMounted';
 import {
   StationForm,
@@ -39,6 +39,38 @@ const AddStationForm: FC = () => {
     submit: null,
   };
 
+  const onSubmit = useCallback(
+    async (
+      values,
+      { setErrors, setStatus, setSubmitting, resetForm }
+    ): Promise<void> => {
+      const stationValues: StationForm = {
+        externalId: makeId(10),
+        name: values.name,
+        latitude: values.latitude,
+        longitude: values.longitude,
+        altitude: values.altitude,
+      };
+      await createStation(stationValues)
+        .unwrap()
+        .then(() => {
+          if (mounted.current) {
+            setStatus({ success: true });
+            setSubmitting(false);
+            resetForm();
+          }
+        })
+        .catch((e) => {
+          if (mounted.current) {
+            setStatus({ success: false });
+            setErrors({ submit: e.data.message });
+            setSubmitting(false);
+          }
+        });
+    },
+    [createStation]
+  );
+
   return (
     <Box
       sx={{
@@ -55,33 +87,7 @@ const AddStationForm: FC = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={async (
-          values,
-          { setErrors, setStatus, setSubmitting, resetForm }
-        ): Promise<void> => {
-          try {
-            const stationValues: StationForm = {
-              externalId: makeId(10),
-              name: values.name,
-              latitude: values.latitude,
-              longitude: values.longitude,
-              altitude: values.altitude,
-            };
-            await createStation(stationValues);
-            if (mounted.current) {
-              setStatus({ success: true });
-              setSubmitting(false);
-              resetForm();
-            }
-          } catch (err) {
-            console.error(err);
-            if (mounted.current) {
-              setStatus({ success: false });
-              setErrors({ submit: err.message });
-              setSubmitting(false);
-            }
-          }
-        }}
+        onSubmit={onSubmit}
       >
         {({
           errors,

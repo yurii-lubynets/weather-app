@@ -1,12 +1,14 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import { FC } from 'react';
 import { WeatherDataResponse } from 'src/services/weatherService';
+import { formatDate } from 'src/utils/formatDate';
 
 interface WeatherCardProps {
   data: WeatherDataResponse;
 }
+
 const WeatherCard: FC<WeatherCardProps> = ({ data }) => {
-  const { coord, weather, main, wind, name, sys } = data;
+  const { coord, weather, main, wind, name, sys, dt } = data;
 
   return (
     <Card raised>
@@ -15,6 +17,9 @@ const WeatherCard: FC<WeatherCardProps> = ({ data }) => {
           <Box p={1}>
             <Typography variant="h2" color="textPrimary">
               {name}, {sys.country}
+            </Typography>
+            <Typography variant="h2" color="textSecondary">
+              {formatDate(dt)}
             </Typography>
             <Typography variant="caption" color="textSecondary">
               {coord.lon}, {coord.lat}

@@ -7,13 +7,11 @@ import StationsListItem from './StationsListItem';
 const StationsList: FC = () => {
   const { data, isFetching } = useGetStationsQuery();
 
-  if (!data) return <></>;
-
   return (
     <Box sx={{ my: 4 }}>
-      <Loader isLoading={isFetching} hasData={data[0]}>
+      <Loader isLoading={isFetching} hasData={data?.[0]}>
         <List>
-          {data.map((station) => (
+          {data?.map((station) => (
             <StationsListItem key={station.id} station={station} />
           ))}
         </List>
