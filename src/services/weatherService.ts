@@ -100,8 +100,8 @@ export const weatherApi = createApi({
       query: () => ({
         url: 'data/3.0/stations',
         method: 'GET',
-        providesTags: [stationsTag],
       }),
+      providesTags: [stationsTag],
     }),
     createStation: build.mutation<void, StationForm>({
       query: (form) => ({
@@ -111,15 +111,15 @@ export const weatherApi = createApi({
           'Content-Type': 'application/json'
         },
         body: form,
-        invalidatesTags: [stationsTag],
       }),
+      invalidatesTags: [stationsTag],
     }),
     deleteStation: build.mutation<void, string>({
       query: (stationId) => ({
         url: `data/3.0/stations/${stationId}`,
         method: 'DELETE',
-        invalidatesTags: [stationsTag],
       }),
+      invalidatesTags: [stationsTag],
     })
   }),
 });
