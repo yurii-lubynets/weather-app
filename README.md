@@ -1,6 +1,10 @@
+### NOTE: Before using the app - please visit https://cors-anywhere.herokuapp.com/ and click submit.
+
+This API enables cross-origin requests to anywhere
+
 # The Weather App using CRA
 
-This is a project template which uses and already has the following packages configured:
+This is a project which uses and already has the following packages configured:
 
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [react-router-dom v6](https://reactrouter.com/)

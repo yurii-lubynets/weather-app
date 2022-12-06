@@ -6,16 +6,9 @@ import WeatherCard from './WeatherCard';
 interface WeatherContainerProps {
   data: WeatherDataResponse;
   isLoading: boolean;
-  isNotFetched: boolean;
 }
 
-const WeatherContainer: FC<WeatherContainerProps> = ({
-  data,
-  isLoading,
-  isNotFetched,
-}) => {
-  if (isNotFetched) return <></>;
-
+const WeatherContainer: FC<WeatherContainerProps> = ({ data, isLoading }) => {
   return (
     <Loader isLoading={isLoading} hasData={data}>
       <WeatherCard data={data} />

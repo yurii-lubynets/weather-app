@@ -13,61 +13,48 @@ const UNIT_TYPE = 'metric';
 const WeatherForecastContainer: FC = () => {
   const [
     fetchWeatherData,
-    {
-      isFetching: isWeatherFetching,
-      currentData: weatherData,
-      isUninitialized: isWeatherNotFetched,
-    },
+    { isFetching: isWeatherFetching, currentData: weatherData },
   ] = useLazyGetWeatherByCityNameQuery();
 
   const [
     fetchForecastData,
-    {
-      isFetching: isForecastFetching,
-      currentData: forecastData,
-      isUninitialized: isForecastNotFetched,
-    },
+    { isFetching: isForecastFetching, currentData: forecastData },
   ] = useLazyGetForecastByCityNameQuery();
 
-  const [forecast, setForecast] = useState(false);
+  const [isForecast, setIsForecast] = useState(false);
 
   const [value, setValue] = useState('');
 
   const handleSearch = useCallback(() => {
     if (!value) return;
-    (forecast ? fetchForecastData : fetchWeatherData)({
+    (isForecast ? fetchForecastData : fetchWeatherData)({
       q: value,
       units: UNIT_TYPE,
     });
-  }, [fetchForecastData, fetchWeatherData, value, forecast]);
+  }, [fetchForecastData, fetchWeatherData, value, isForecast]);
 
   useEffect(() => {
     handleSearch();
-  }, [forecast]);
+  }, [isForecast]);
 
   return (
     <Container maxWidth="lg">
       <SearchControl
         value={value}
         setValue={setValue}
-        forecast={forecast}
-        setForecast={setForecast}
+        isForecast={isForecast}
+        setIsForecast={setIsForecast}
         handleSearch={handleSearch}
       />
       <Divider />
       <Box sx={{ my: 4 }}>
-        {forecast ? (
+        {isForecast ? (
           <ForecastContainer
             data={forecastData}
             isLoading={isForecastFetching}
-            isNotFetched={isForecastNotFetched}
           />
         ) : (
-          <WeatherContainer
-            data={weatherData}
-            isLoading={isWeatherFetching}
-            isNotFetched={isWeatherNotFetched}
-          />
+          <WeatherContainer data={weatherData} isLoading={isWeatherFetching} />
         )}
       </Box>
     </Container>

@@ -6,16 +6,9 @@ import Loader from './Loader';
 interface ForecastContainerProps {
   data: ForecastDataResponse;
   isLoading: boolean;
-  isNotFetched: boolean;
 }
 
-const ForecastContainer: FC<ForecastContainerProps> = ({
-  data,
-  isLoading,
-  isNotFetched,
-}) => {
-  if (isNotFetched) return <></>;
-
+const ForecastContainer: FC<ForecastContainerProps> = ({ data, isLoading }) => {
   return (
     <Loader isLoading={isLoading} hasData={data}>
       {data?.list

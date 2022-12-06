@@ -11,15 +11,15 @@ import { FC } from 'react';
 interface SearchControlProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  forecast: boolean;
-  setForecast: React.Dispatch<React.SetStateAction<boolean>>;
+  isForecast: boolean;
+  setIsForecast: React.Dispatch<React.SetStateAction<boolean>>;
   handleSearch: () => void;
 }
 
 const SearchControl: FC<SearchControlProps> = ({
   value,
-  forecast,
-  setForecast,
+  isForecast,
+  setIsForecast,
   setValue,
   handleSearch,
 }) => {
@@ -52,8 +52,8 @@ const SearchControl: FC<SearchControlProps> = ({
             control={
               <Checkbox
                 name="forecast"
-                checked={forecast}
-                onClick={() => setForecast((isChecked) => !isChecked)}
+                checked={isForecast}
+                onClick={() => setIsForecast((isChecked) => !isChecked)}
               />
             }
             label="5 days forecast"
